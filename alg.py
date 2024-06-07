@@ -13,7 +13,14 @@ def calculate_similarity(user, match_user):
     if (user.getAllow() and match_user.getAllow()) or (user.getGender() == match_user.getGender()):
         print("ok")
         pref = meetPreference(user, match_user)
-        
+        if pref == 0:
+            match_user.updateSimilarity(0)
+        elif pref == 1:
+            of2fMatch(user, match_user)
+        elif pref == 2:
+            onlineMatch(user, match_user)
+        else:
+            f2fMatch(user, match_user)
     else: 
         match_user.updateSimilarity(0)
 
@@ -43,3 +50,15 @@ def meetPreference(user1, user2):
         return 3
     else:
         return 0
+    
+def onlineMatch(user1, user2):
+    print("on")
+    
+def of2fMatch(user1, user2):
+    print("of2f")
+    
+def f2fMatch(user1, user2):
+    print("f2f")
+    
+def similarityScoring(user1, user2):
+    print("score")
