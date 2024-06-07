@@ -43,4 +43,8 @@ class User:
     
     def getUniStatus(self):
         return self.attendsUni
+    
+    def updateSimilarity(self, sim):
+        self.similarity=sim
+        return self.similarity
 
