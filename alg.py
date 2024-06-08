@@ -5,7 +5,7 @@ from user import User
 
 user_id = int(input("Please enter the user id: "))
 
-df = pd.read_excel('data.xlsx')
+df = pd.read_excel('WnM_data_excel.xlsx')
 
 user= User(user_id,df)
 print(user.data)
