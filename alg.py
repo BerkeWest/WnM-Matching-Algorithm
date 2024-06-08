@@ -8,9 +8,10 @@ user_id = int(input("Please enter the user id: "))
 df = pd.read_excel('data.xlsx')
 
 user= User(user_id,df)
+print(user.data)
 
 def calculate_similarity(user, match_user):
-    if (user.getAllow() and match_user.getAllow()) or (user.getGender() == match_user.getGender()):
+    if (user.getAllow()==1 and match_user.getAllow()==1) or (user.getGender() == match_user.getGender()):
         print("ok")
         pref = meetPreference(user, match_user)
         if pref == 0:
@@ -24,17 +25,6 @@ def calculate_similarity(user, match_user):
     else: 
         match_user.updateSimilarity(0)
 
-while True:
-    id=1
-    if id > 1000:
-        break
-    elif id != user_id:
-        match_user = User(id,df)
-        calculate_similarity(user, match_user)
-        id = id + 1
-    else:
-        id = id + 1
-        
 def meetPreference(user1, user2):
     online=False
     f2f=False
@@ -44,13 +34,13 @@ def meetPreference(user1, user2):
         f2f=True
     if online and f2f:
         return 1
-    elif online == True:
+    elif online == True and f2f == False:
         return 2
-    elif f2f == True:
+    elif f2f == True and online == False:
         return 3
     else:
         return 0
-    
+
 def onlineMatch(user1, user2):
     print("on")
     
@@ -62,3 +52,10 @@ def f2fMatch(user1, user2):
     
 def similarityScoring(user1, user2):
     print("score")
+
+for id in range (1,1000):
+    if id != user_id:
+        match_user = User(id,df)
+        calculate_similarity(user, match_user)
+    else:
+        continue
