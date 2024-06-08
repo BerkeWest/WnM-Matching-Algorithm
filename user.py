@@ -1,9 +1,8 @@
 class User:
-    similarity = 0
-    
     def __init__(self, user_id, df):
         self.user_id = user_id
         self.data = []
+        self.similarity = 0
         row = df[df['id'] == self.user_id]
         if not row.empty:
             row = row.iloc[0]
@@ -31,6 +30,7 @@ class User:
             self.data.append(row["district"])
             self.data.append(row["joinDate"])
             self.data.append(row["rating"])
+            self.data.append(self.similarity)
 
     def getId(self):
         return self.data[0]
@@ -104,10 +104,9 @@ class User:
     def getRating(self):
         return self.data[23]
     
-    def updateSimilarity(self, sim):
-        self.similarity = sim
-        return self.similarity
+    def getSimilarity(self):
+        return self.data[24]
     
     def updateSimilarity(self, sim):
         self.similarity = sim
-        return self.similarity
+        self.data[24]=self.similarity
