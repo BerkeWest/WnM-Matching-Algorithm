@@ -1,50 +1,113 @@
-
 class User:
-    similarity=0
+    similarity = 0
     
     def __init__(self, user_id, df):
         self.user_id = user_id
-        row = df.index[df['id'] == self.user_id]
-        self.name = df.loc[row,"name"]
-        self.surname = df.loc[row,"surname"]
-        self.email = df.loc[row,"email"]
-        self.birthDate = df.loc[row,"birthDate"]
-        self.allowOppositeGender = df.loc[row,"allowOppositeGender"]
-        self.gender = df.loc[row,"gender"]
-        self.field = df.loc[row,"field"]
-        self.interest1 = df.loc[row,"interest1"]
-        self.interest2 = df.loc[row,"interest2"]
-        self.interest3 = df.loc[row,"interest3"]
-        self.interest4 = df.loc[row,"interest4"]
-        self.interest5 = df.loc[row,"interest5"]
-        self.attendsUni = df.loc[row,"attendsUni"]
-        self.university = df.loc[row,"university"]
-        self.workplace = df.loc[row,"workplace"]
-        self.purpose = df.loc[row,"purpose"]
-        self.online = df.loc[row,"online"]
-        self.f2f = df.loc[row,"f2f"]
-        self.country = df.loc[row,"country"]
-        self.city = df.loc[row,"city"]
-        self.district = df.loc[row,"district"]
-        self.joinDate = df.loc[row,"joinDate"]
-        self.rating = df.loc[row,"rating"]
+        self.data = []
+        row = df[df['id'] == self.user_id]
+        if not row.empty:
+            row = row.iloc[0]
+            self.data.append(row["id"])
+            self.data.append(row["name"])
+            self.data.append(row["surname"])
+            self.data.append(row["email"])
+            self.data.append(row["birthDate"])
+            self.data.append(row["allowOppositeGender"])
+            self.data.append(row["gender"])
+            self.data.append(row["field"])
+            self.data.append(row["interest1"])
+            self.data.append(row["interest2"])
+            self.data.append(row["interest3"])
+            self.data.append(row["interest4"])
+            self.data.append(row["interest5"])
+            self.data.append(row["attendsUni"])
+            self.data.append(row["university"])
+            self.data.append(row["workplace"])
+            self.data.append(row["purpose"])
+            self.data.append(row["online"])
+            self.data.append(row["f2f"])
+            self.data.append(row["country"])
+            self.data.append(row["city"])
+            self.data.append(row["district"])
+            self.data.append(row["joinDate"])
+            self.data.append(row["rating"])
+
+    def getId(self):
+        return self.data[0]
+    
+    def getName(self):
+        return self.data[1]
+    
+    def getSurname(self):
+        return self.data[2]
+    
+    def getEmail(self):
+        return self.data[3]
+    
+    def getBirthDate(self):
+        return self.data[4]
     
     def getAllow(self):
-        return self.allowOppositeGender
+        return self.data[5]
     
     def getGender(self):
-        return self.gender
-        
-    def getOnline(self):
-        return self.online
+        return self.data[6]
     
-    def getF2F(self):
-        return self.f2f
+    def getField(self):
+        return self.data[7]
+    
+    def getInt1(self):
+        return self.data[8]
+    
+    def getInt2(self):
+        return self.data[9]
+    
+    def getInt3(self):
+        return self.data[10]
+    
+    def getInt4(self):
+        return self.data[11]
+    
+    def getInt5(self):
+        return self.data[12]
     
     def getUniStatus(self):
-        return self.attendsUni
+        return self.data[13]
+    
+    def getUni(self):
+        return self.data[14]
+    
+    def getWorkplace(self):
+        return self.data[15]
+    
+    def getPurpose(self):
+        return self.data[16]
+    
+    def getOnline(self):
+        return self.data[17]
+    
+    def getF2F(self):
+        return self.data[18]
+    
+    def getCountry(self):
+        return self.data[19]
+    
+    def getCity(self):
+        return self.data[20]
+    
+    def getDistrict(self):
+        return self.data[21]
+    
+    def getJoinDate(self):
+        return self.data[22]
+    
+    def getRating(self):
+        return self.data[23]
     
     def updateSimilarity(self, sim):
-        self.similarity=sim
+        self.similarity = sim
         return self.similarity
-
+    
+    def updateSimilarity(self, sim):
+        self.similarity = sim
+        return self.similarity
