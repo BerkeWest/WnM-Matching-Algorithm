@@ -30,19 +30,9 @@ class User:
             self.data.append(row["district"])
             self.data.append(row["joinDate"])
             self.data.append(row["rating"])
-            self.data.append(self.similarity)
 
     def getId(self):
         return self.data[0]
-    
-    def getName(self):
-        return self.data[1]
-    
-    def getSurname(self):
-        return self.data[2]
-    
-    def getEmail(self):
-        return self.data[3]
     
     def getBirthDate(self):
         return self.data[4]
@@ -56,29 +46,11 @@ class User:
     def getField(self):
         return self.data[7]
     
-    def getInt1(self):
-        return self.data[8]
-    
-    def getInt2(self):
-        return self.data[9]
-    
-    def getInt3(self):
-        return self.data[10]
-    
-    def getInt4(self):
-        return self.data[11]
-    
-    def getInt5(self):
-        return self.data[12]
-    
     def getUniStatus(self):
         return self.data[13]
     
     def getUni(self):
         return self.data[14]
-    
-    def getWorkplace(self):
-        return self.data[15]
     
     def getPurpose(self):
         return self.data[16]
@@ -105,8 +77,10 @@ class User:
         return self.data[23]
     
     def getSimilarity(self):
-        return self.data[24]
+        return self.similarity
+    
+    def getInterests(self):
+        return self.data[8:13]
     
     def updateSimilarity(self, sim):
         self.similarity = sim
-        self.data[24]=self.similarity
