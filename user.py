@@ -4,6 +4,7 @@ class User:
         self.data = []
         self.similarity = 0
         row = df[df['id'] == self.user_id]
+
         if not row.empty:
             row = row.iloc[0]
             self.data.append(row["id"])
@@ -30,12 +31,11 @@ class User:
             self.data.append(row["district"])
             self.data.append(row["joinDate"])
             self.data.append(row["rating"])
+            self.data.append(row["uniOnly"])
+            self.data.append(row["priority"])
 
     def getId(self):
         return self.data[0]
-    
-    def getBirthDate(self):
-        return self.data[4]
     
     def getAllow(self):
         return self.data[5]
@@ -61,20 +61,20 @@ class User:
     def getF2F(self):
         return self.data[18]
     
-    def getCountry(self):
-        return self.data[19]
-    
     def getCity(self):
         return self.data[20]
     
     def getDistrict(self):
         return self.data[21]
     
-    def getJoinDate(self):
-        return self.data[22]
-    
     def getRating(self):
         return self.data[23]
+    
+    def getUniOnly(self):
+        return self.data[24]
+    
+    def getPriority(self):
+        return self.data[25]
     
     def getSimilarity(self):
         return self.similarity
