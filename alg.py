@@ -152,14 +152,10 @@ def onlineMatch(user, match_user):
     
 def bothMatch(user, match_user):
     sim = 0
-    if user.getCity() == match_user.getCity():
-        sim1 = f2fMatch(user, match_user)
-        sim2 = onlineMatch(user, match_user)
-        sim = max(sim1, sim2)
-        return sim
-    else:
-        sim = onlineMatch(user, match_user)
-        return sim
+    sim1 = f2fMatch(user, match_user)
+    sim2 = onlineMatch(user, match_user)
+    sim = max(sim1, sim2)
+    return sim
     
 def f2fMatch(user, match_user):
     sim = 0
@@ -173,7 +169,11 @@ def f2fMatch(user, match_user):
         dist_list = cities_to_district[user.getCity()]
         ud = dist_list.index(user.getDistrict())
         md = dist_list.index(match_user.getDistrict())
-        sim = sim + 0.14 - ((0.14/len(dist_list)) * (abs(ud - md))) + prioritizeDistrict()
+        if ud == md:
+            sim = sim + 0.14 + prioritizeDistrict()
+        else: 
+            sim = sim + 0.14 - ((0.14/(len(dist_list)/2)) * abs(ud - md)) + prioritizeDistrict()
+
 
         u_ints = user.getInterests()
         m_ints = match_user.getInterests()
