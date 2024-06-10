@@ -169,10 +169,7 @@ def f2fMatch(user, match_user):
         dist_list = cities_to_district[user.getCity()]
         ud = dist_list.index(user.getDistrict())
         md = dist_list.index(match_user.getDistrict())
-        if ud == md:
-            sim = sim + 0.14 + prioritizeDistrict()
-        else: 
-            sim = sim + 0.14 - ((0.14/(len(dist_list))) * (abs(ud - md)/2)) + prioritizeDistrict()
+        sim = sim + 0.14 - ((0.14/(len(dist_list))) * (abs(ud - md)/2)) + prioritizeDistrict()
 
 
         u_ints = user.getInterests()
