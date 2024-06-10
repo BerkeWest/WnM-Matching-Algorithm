@@ -172,7 +172,7 @@ def f2fMatch(user, match_user):
         if ud == md:
             sim = sim + 0.14 + prioritizeDistrict()
         else: 
-            sim = sim + 0.14 - ((0.14/(len(dist_list)/2)) * abs(ud - md)) + prioritizeDistrict()
+            sim = sim + 0.14 - ((0.14/(len(dist_list))) * (abs(ud - md)/2)) + prioritizeDistrict()
 
 
         u_ints = user.getInterests()
